@@ -1,19 +1,21 @@
 from model import DenoiseNetwork
 from train import fit
 from preprocess import preprocess_data
+import argparse 
+import os
 
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
 
-	# Input Parameters
-	parser.add_argument('--epochs', type=int, default= 20)
+    # Input Parameters
+    parser.add_argument('--epochs', type=int, default=20)
     parser.add_argument('--lr', type=float, default=1e-3)
-	parser.add_argument('--gpu', type=int, default=0)
-	parser.add_argument('--checkpoints_folder', type=str, default="weights//ckpt")
-	parser.add_argument('--pretrain_dir', type=str)
+    parser.add_argument('--gpu', type=int, default=0)
+    parser.add_argument('--checkpoints_folder', type=str, default="weights//ckpt")
+    parser.add_argument('--pretrain_dir', type=str)
 
-	config = parser.parse_args()
+    config = parser.parse_args()
 
     # Check GPU
     os.environ['CUDA_VISIBLE_DEVICES'] = str(config.gpu)

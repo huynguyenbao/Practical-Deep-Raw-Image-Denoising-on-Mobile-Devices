@@ -1,17 +1,20 @@
 from model import DenoiseNetwork
 from preprocess import load_image
+import tensorflow as tf
+import argparse
+import os
 
 if __name__ == "__main__":
 
-	parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()
 
-	# Input Parameters
-	parser.add_argument('--input_path', type=str, default="")
+    # Input Parameters
+    parser.add_argument('--input_path', type=str, default="")
     parser.add_argument('--output_path', type=str, default="")
     parser.add_argument('--gpu', type=int, default=0)
-	parser.add_argument('--pretrain_dir', type=str, default= "weights//ckpt")
+    parser.add_argument('--pretrain_dir', type=str, default= "weights//ckpt")
 
-	config = parser.parse_args()
+    config = parser.parse_args()
 
     # Check GPU
     os.environ['CUDA_VISIBLE_DEVICES'] = str(config.gpu)
@@ -22,8 +25,8 @@ if __name__ == "__main__":
     model.load_weights(config.pretrain_dir)
 
     # Inference
-    noisy_image = load_image(input_path)    
+    noisy_image = load_image(config.input_path)    
     clean_image = model(noisy_image[None])
-    
+
     # Save denoised image
-    tf.keras.preprocessing.image.save_img(output_path, clean_image[0])
+    tf.keras.preprocessing.image.save_img(config.output_path, clean_image[0])
