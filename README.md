@@ -32,7 +32,7 @@ Note: Istead of training with RGGB pattern, input of this mode is noisy sRGB ima
 
 ### Result
 
-This result acquired after training 20 epochs, input shape: 256*256*3. Number of pairs images is 2476.
+This result acquired after training 20 epochs, input shape: 256x256x3. Number of pairs images is 2476.
 
 ![INPUT](rs/noisy_0.png) | ![OUTPUT](rs/denoising_0.png) | ![TARGET](rs/grouth_truth_0.png)
 |:---:|:---:|:---:|
