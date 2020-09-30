@@ -11,7 +11,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=1e-3)
 	parser.add_argument('--gpu', type=int, default=0)
 	parser.add_argument('--checkpoints_folder', type=str, default="weights//ckpt")
-	parser.add_argument('--pretrain_dir', type=str, default= "weights//ckpt")
+	parser.add_argument('--pretrain_dir', type=str)
 
 	config = parser.parse_args()
 
